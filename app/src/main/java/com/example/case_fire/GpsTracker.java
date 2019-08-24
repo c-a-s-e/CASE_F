@@ -1,4 +1,4 @@
-package com.example.phonecall;
+package com.example.case_fire;
 
 import android.Manifest;
 import android.app.Service;
@@ -40,7 +40,7 @@ public class GpsTracker extends Service implements LocationListener {
     }
 
 
-    public String getCurrentAddress( double latitude, double longitude) {
+    public String getCurrentAddress(double latitude, double longitude) {
 
         //지오코더... GPS를 주소로 변환
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());

@@ -1,4 +1,4 @@
-package com.example.phonecall;
+package com.example.case_fire;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -11,22 +11,14 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,21 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         gpsTracker = new GpsTracker(MainActivity.this);
 
-        FirebaseApp.initializeApp(this);
         FirebaseMessaging.getInstance().subscribeToTopic("all");
-
-
-
         getAddress();
-
     }
 
-    public String getAddress(){
+    public void getAddress(){
         double latitude = gpsTracker.getLatitude();
         double longitude = gpsTracker.getLongitude();
-        String address = gpsTracker.getCurrentAddress(latitude, longitude);
-        Toast.makeText(MainActivity.this, "현재위치 \n위도 " + address + latitude + " 위도 " + longitude , Toast.LENGTH_LONG).show();
-        return address;
+        //String address = gpsTracker.getCurrentAddress(latitude, longitude);
+        //Toast.makeText(MainActivity.this, "현재위치 \n위도 " + address + latitude + " 위도 " + longitude , Toast.LENGTH_LONG).show();
+        //return address;
     }
 
 
