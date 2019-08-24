@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:onClick="Click_PhoneCall"
+                android:onClick="clickPhoneCall"
                 android:text="전화바로걸기" />
 
             <Button

@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Get_Address();
+        getAddress();
 
     }
 
-    public String Get_Address(){
+    public String getAddress(){
         double latitude = gpsTracker.getLatitude();
         double longitude = gpsTracker.getLongitude();
         String address = gpsTracker.getCurrentAddress(latitude, longitude);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     //119 - > 신고자에게 전화
     @SuppressLint("MissingPermission")
-    public void Click_PhoneCall(View view) {
+    public void clickPhoneCall(View view) {
         try {
             Intent tt = new Intent(Intent.ACTION_CALL, Uri.parse("tel" + phonenumber));
             startActivity(tt);
