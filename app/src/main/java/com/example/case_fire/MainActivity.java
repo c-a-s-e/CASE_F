@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -28,5 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FirebaseMessaging.getInstance().subscribeToTopic("all");
+
+        Button reward_Button = (Button) findViewById(R.id.check_rate);
+        reward_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), RateActivity.class);
+                view.getContext().startActivity(intent);}
+        });
     }
 }

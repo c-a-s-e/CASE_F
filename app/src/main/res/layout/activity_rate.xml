@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Good Job!\nHow was the patient?"
+        android:textSize="28dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/confirm_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/confirm_yes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text1"/>
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="270dp"
+        android:layout_height="65dp"
+        android:text="  Emergency Clear  "
+        android:background="#a5371e"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_yes"/>
+
+    <ImageView
+        android:id="@+id/confirm_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/confirm_no"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text2"/>
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="270dp"
+        android:layout_height="65dp"
+        android:text="  It was fake  "
+        android:background="@drawable/xml_boarder"
+        android:textColor="#a5371e"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirm_no"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,6 +39,11 @@
                 android:layout_height="wrap_content"
                 android:text="전화걸기 다이얼로그"
                 android:id="@+id/btnDialog" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Rate"
+                android:id="@+id/check_rate" />
         </LinearLayout>
 
     </LinearLayout>
