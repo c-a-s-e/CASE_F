@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,13 +35,14 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
     private GoogleMap mMap;
     private Button buttonGo, buttonCall;
 
-    private String senderPhone, senderToken, senderAddress;
+    private String senderToken, senderAddress, phoneNumber;
     private Double senderLatitude, senderLongitude;
     private Double myLatitude, myLongitude;
     private TextView senderAddressText, senderDistanceText;
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
-    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
+    Manifest.permission.CALL_PHONE};
     GpsTracker gpsTracker;
 
     @Override
@@ -57,7 +60,9 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        senderPhone = extras.getString("sender-phone");
+//        CallUtil.setPhoneNumber(extras.getString("sender-phone"));
+        phoneNumber = extras.getString("sender-phone");
+        ArrivalActivity.phoneNumber = phoneNumber;
         senderToken = extras.getString("sender-token");
         senderAddress = extras.getString("sender_address");
         senderLatitude = Double.parseDouble(extras.getString("sender_latitude"));
@@ -70,10 +75,10 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
         setPatientLocation();
 
         buttonGo=findViewById(R.id.button_go);
-        buttonGo.setOnClickListener(new View.OnClickListener(){
+        buttonGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendMessage.sendAccept(EmergencyMainActivity.this, senderToken);
+                goButtonClicked(view);
             }
         });
 
@@ -84,7 +89,16 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
                 clickPhoneCall(view);
             }
         });
+    }
 
+    void goButtonClicked(View v){
+        sendMessage.sendAccept(EmergencyMainActivity.this, senderToken);
+        Intent intent = new Intent(this, NavigationActivity.class);
+        intent.putExtra("senderLatitude", senderLatitude);
+        intent.putExtra("senderLongitude", senderLongitude);
+        intent.putExtra("myLatitude", myLatitude);
+        intent.putExtra("myLongitude", myLongitude);
+        startActivity(intent);
     }
 
     void setPatientLocation(){
@@ -92,8 +106,8 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
         senderAddressText.setText(senderAddress);
 
         senderDistanceText = findViewById(R.id.textview_distance);
-//        myLatitude = gpsTracker.getLatitude();
-//        myLongitude = gpsTracker.getLongitude();
+        myLatitude = gpsTracker.getLatitude();
+        myLongitude = gpsTracker.getLongitude();
 
         //위도, 경도로 거리 구하기..
 
@@ -118,13 +132,18 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
     @SuppressLint("MissingPermission")
     public void clickPhoneCall(View view) {
         try {
-            Intent tt = new Intent(Intent.ACTION_CALL, Uri.parse("tel" + senderPhone));
-            startActivity(tt);
-        }
-        catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
+            if (phoneNumber==null){
+                Toast.makeText(getApplicationContext(), "번호가 없어서 전화를 걸 수 없습니다", Toast.LENGTH_SHORT);
+                return;
+            }
+                Log.d("phoneNumber", phoneNumber);
+                Intent tt = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber));
+                startActivity(tt);
+            }
+            catch(Exception ex)
+            {
+                System.out.println(ex.getMessage());
+            }
     }
 
 
