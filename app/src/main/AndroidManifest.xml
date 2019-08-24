@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.example.case_fire.EmergencyMainActivity"></activity>
+        <activity android:name="com.example.case_fire.RateActivity"></activity>
         <activity android:name="com.example.case_fire.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
