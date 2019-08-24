@@ -44,7 +44,7 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng patient = new LatLng(Double.parseDouble(senderLongitude), Double.parseDouble(senderLatitude));
+        LatLng patient = new LatLng(Double.parseDouble(senderLatitude), Double.parseDouble(senderLongitude));
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(patient);
