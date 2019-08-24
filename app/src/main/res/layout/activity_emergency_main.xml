@@ -14,9 +14,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="응급상황!\n빨리 와주세요!"
+            android:text="Emergency!\nPlease Come Here!"
             android:layout_gravity="center"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="20pt"
+            android:textStyle="bold"/>
 
         <fragment
             android:id="@+id/map"
@@ -32,31 +35,38 @@
             android:id="@+id/textview_sender_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="QQ빌딩"
+            android:text="QQ Building"
             android:layout_gravity="center"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="15pt"/>
 
         <TextView
             android:id="@+id/textview_distance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5km 5분"
+            android:text="5km 5min"
             android:layout_gravity="center"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="10pt"/>
 
         <Button
             android:id="@+id/button_go"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="출동" />
+            android:text="Let's go!"
+            android:textColor="@android:color/white"
+            android:textSize="13pt"/>
 
         <Button
             android:id="@+id/button_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="전화받기" />
+            android:text="Tap to Call"
+            android:textColor="@android:color/white"
+            />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
