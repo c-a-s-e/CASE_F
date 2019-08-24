@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -45,6 +46,7 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency_main);
+        getSupportActionBar().hide();
 
         if (!checkLocationServicesStatus())
             showDialogForLocationServiceSetting();
@@ -95,7 +97,7 @@ public class EmergencyMainActivity extends AppCompatActivity implements OnMapRea
 
         //위도, 경도로 거리 구하기..
 
-        senderDistanceText.setText("5km 5분");
+        senderDistanceText.setText("5km 5min");
     }
 
     @Override
