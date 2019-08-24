@@ -12,11 +12,10 @@
         android:layout_height="match_parent">
 
 
-
         <EditText
+            android:id="@+id/edtNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edtNumber"
             android:layout_gravity="center_horizontal" />
 
         <LinearLayout
@@ -45,6 +44,11 @@
                 android:text="Check Rate"
                 android:id="@+id/check_rate" />
         </LinearLayout>
-
     </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check Reward"
+        android:id="@+id/check_reward" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
