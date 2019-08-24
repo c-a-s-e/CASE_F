@@ -31,15 +31,20 @@ public class MessagingService extends com.google.firebase.messaging.FirebaseMess
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Map<String, String> data = remoteMessage.getData();
         Log.e("type", data.get("type"));
-        
+
         if (data.get("sender-token").equals(FirebaseInstanceId.getInstance().getToken())) return;
+
         if (data.get("type").equals("accept")) {
+            MainActivity.phonenumber = data.get("sender-phone");
+
             Intent intent = new Intent();
             intent.setAction("accepted");
             sendBroadcast(intent);
         } else {
+
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                 return; //자기 위치 파악 불가하면 그냥 무시
+
             SharedPreferences sharedPreferences = getSharedPreferences("sFile", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("sender-token", data.get("sender-token"));

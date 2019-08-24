@@ -24,12 +24,13 @@
             android:gravity="center_horizontal">
 
             <Button
+                android:id="@+id/btnCall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전화바로걸기"
-                android:id="@+id/btnCall"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="Click_PhoneCall"
+                android:text="전화바로걸기" />
 
             <Button
                 android:layout_width="wrap_content"
