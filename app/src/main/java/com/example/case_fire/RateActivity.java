@@ -13,6 +13,7 @@ public class RateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
+        getSupportActionBar().hide();
     }
 
     public void onButtonClicked(View v){
